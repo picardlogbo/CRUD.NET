@@ -6,19 +6,19 @@ namespace project.net.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class PizzaController : ControllerBase
+public class PizzasController : ControllerBase
 {
-	public PizzaController()
+	public PizzasController()
 	{
 	}
 
 	// GET all action
 	[HttpGet]
-	public ActionResult<List<pizza>> getAll() => PizzaService.GetAll();
+	public ActionResult<List<pizzas>> getAll() => PizzaService.GetAll();
 
 	// GET by Id action
 	[HttpGet("id")]
-	public ActionResult<pizza> get(int id)
+	public ActionResult<pizzas> get(int id)
 	{
 		var pizza = PizzaService.Get(id);
 		
@@ -31,7 +31,7 @@ public class PizzaController : ControllerBase
 
 	// POST action
 	[HttpPost]
-	public IActionResult Create(pizza pizza)
+	public IActionResult Create(pizzas pizza)
 	{
 		PizzaService.Add(pizza);
 		return CreatedAtAction(nameof(get), new { id = pizza.id }, pizza);
@@ -39,7 +39,7 @@ public class PizzaController : ControllerBase
 	
 	// PUT action
 	[HttpPut("{id}")]
-	public IActionResult Update(int id, pizza pizza)
+	public IActionResult Update(int id, pizzas pizza)
 	{
 		if (id != pizza.id)
 		{
